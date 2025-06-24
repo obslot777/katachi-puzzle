@@ -247,6 +247,9 @@ function touchEndHandler(e) {
       // 元のドラッグ要素削除
       if(draggedElem.parentNode) draggedElem.parentNode.removeChild(draggedElem);
 
+      // ドロップ済みフラグをセット
+      this.dataset.dropped = "true";
+      
       checkClear();
       dropped = true;
     }
