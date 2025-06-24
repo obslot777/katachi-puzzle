@@ -242,26 +242,25 @@ function touchEndHandler(e) {
       svg.style.display = 'block';
       zone.appendChild(svg);
 
+      // ドロップ済みフラグをセット
+      zone.dataset.dropped = "true";
+
       document.getElementById('correct-sound').play();
 
       // 元のドラッグ要素削除
       if(draggedElem.parentNode) draggedElem.parentNode.removeChild(draggedElem);
 
-      // ドロップ済みフラグをセット
-      zone.dataset.dropped = "true";
-
-      checkClear();
       dropped = true;
     }
   });
 
-  if (!dropped) {
-    // 元に戻る（何もしない）
-  }
-
   draggingClone.remove();
   draggingClone = null;
   draggedElem = null;
+
+  if (dropped) {
+    checkClear();
+  }
 }
 
 function moveDraggingClone(x, y) {
